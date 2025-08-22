@@ -26,11 +26,4 @@ For now, feel free to open **issues** for suggestions or feature requests.
 
 ---
 
-## 📬 Contact
-If you have any questions, feel free to reach out:  
-📧 [Your Email]  
-🌐 [Your Website / Portfolio]  
-
----
-
 <p align="center">⚡ Thanks for your patience and support! ⚡</p>
