@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Upload Test</title>
+</head>
+<body>
+    <h1>Test Video Upload</h1>
+    <video id="video-preview" width="320" height="240" autoplay muted></video>
+    <button id="start-recording">Start Recording</button>
+    <button id="stop-recording" disabled>Stop Recording</button>
+    <p id="status"></p>
+
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        document.getElementById('start-recording').addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then(stream => {
+                    document.getElementById('video-preview').srcObject = stream;
+
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.ondataavailable = event => {
+                        if (event.data.size > 0) {
+                            recordedChunks.push(event.data);
+                        }
+                    };
+
+                    mediaRecorder.start();
+                    document.getElementById('start-recording').disabled = true;
+                    document.getElementById('stop-recording').disabled = false;
+                    document.getElementById('status').textContent = 'Recording...';
+                })
+                .catch(error => {
+                    console.error('Error accessing media devices:', error);
+                    alert('Please allow camera and microphone access.');
+                });
+        });
+
+        document.getElementById('stop-recording').addEventListener('click', () => {
+            mediaRecorder.stop();
+            document.getElementById('stop-recording').disabled = true;
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                uploadVideo(blob);
+            };
+        });
+
+        function uploadVideo(blob) {
+            const formData = new FormData();
+            formData.append('video', blob, 'test_video_' + Date.now() + '.webm');
+
+            fetch('test_upload_video.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('status').textContent = 'Upload successful! File path: ' + data.file_path;
+                } else {
+                    document.getElementById('status').textContent = 'Upload failed: ' + data.message;
+                }
+            })
+            .catch(error => {
+                console.error('Error uploading video:', error);
+                document.getElementById('status').textContent = 'Error uploading video.';
+            });
+        }
+    </script>
+</body>
+</html>
