@@ -1,0 +1,110 @@
+# ===========================================
+# HireGenius - Git Ignore File
+# ===========================================
+
+# ===========================================
+# Configuration & Environment
+# ===========================================
+config/config.php
+.env
+.env.local
+.env.*.local
+*.local.php
+
+# ===========================================
+# IDE & Editor Files
+# ===========================================
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.swp
+*.swo
+*~
+
+# ===========================================
+# OS Generated Files
+# ===========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===========================================
+# Uploads & Media (DO NOT UPLOAD VIDEOS)
+# ===========================================
+uploads/
+storage/uploads/
+storage/videos/
+videos/
+*.mp4
+*.webm
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.m4v
+
+# ===========================================
+# Logs & Debug Files
+# ===========================================
+*.log
+logs/
+storage/logs/
+debug_log.txt
+error_log
+php_errors.log
+
+# ===========================================
+# Cache & Temporary Files
+# ===========================================
+cache/
+tmp/
+temp/
+*.tmp
+*.temp
+*.cache
+
+# ===========================================
+# Composer (if used)
+# ===========================================
+/vendor/
+composer.lock
+
+# ===========================================
+# Node (if used)
+# ===========================================
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# ===========================================
+# Database
+# ===========================================
+*.sql.bak
+*.sqlite
+*.db
+
+# ===========================================
+# Test & Demo Files
+# ===========================================
+test_*.php
+test_*.html
+demo*.php
+demo*.html
+phpinfo.php
+
+# ===========================================
+# Backups
+# ===========================================
+*.bak
+*.backup
+*~
