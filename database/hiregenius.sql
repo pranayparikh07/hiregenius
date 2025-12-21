@@ -163,7 +163,7 @@ CREATE TABLE `settings` (
 -- Insert Default Admin (password: admin123)
 -- ===========================================
 INSERT INTO `admins` (`name`, `email`, `password`) VALUES 
-('Super Admin', 'admin@hiregenius.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
+('Super Admin', 'admin@hiregenius.com', '$2y$10$0KZgsgwuQdB5yiBjivsq4eVgjAV5Qqh9gOquyrjajx33EurI6ex7q');
 
 -- ===========================================
 -- Insert Default Settings
