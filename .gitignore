@@ -37,12 +37,17 @@ Thumbs.db
 desktop.ini
 
 # ===========================================
-# Uploads & Media (DO NOT UPLOAD VIDEOS)
+# Uploads & Media (Videos excluded from git)
 # ===========================================
-uploads/
+# Keep folder structure but ignore video files
+uploads/videos/*
+!uploads/videos/.gitkeep
+!uploads/.gitkeep
 storage/uploads/
 storage/videos/
 videos/
+
+# Video files (never upload to git)
 *.mp4
 *.webm
 *.avi
@@ -51,6 +56,8 @@ videos/
 *.flv
 *.wmv
 *.m4v
+*.ogg
+*.ogv
 
 # ===========================================
 # Logs & Debug Files
